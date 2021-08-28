@@ -1,7 +1,9 @@
 # ghichep-ansible
 
-ansible-playbook -i test test.yml
+ansible-playbook test.yml -i host --limit prod
 
---> những host nào được khai báo trong trong file **test** sẻ được đẩy qua server remote.
+--> những host nào nằm trong group **prod** được khai báo trong trong file **host** sẻ được đẩy qua server remote.
 
-ansible-playbook -i prod test.yml
+ansible-playbook -i **host** test.yml
+
+--> file config sẻ được đẩy toàn bộ qua tất cả server được khai báo trong **host**
