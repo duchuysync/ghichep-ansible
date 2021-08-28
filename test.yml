@@ -1,20 +1,14 @@
-- hosts: test
+- hosts: all 
   tasks:
     - name: test
       copy:
         src: ./var/config
         dest: /root/config
-    - name: check_ip
+    - name: test_log
       command:
         cmd: ip a
       register: output
     - name: xuat ra man hinh
       debug: var=output.stdout_lines
-    - name: ghi_log_command_ra_file
+    - name: host_name
       local_action: "copy content='{{ output.stdout_lines }}' dest=./var/{{ ansible_hostname }}.txt"
-- hosts: prod
-  tasks:
-    - name: prod
-      copy:
-        src: ./var/config
-        dest: /root/config
